@@ -1,0 +1,14 @@
+# .gitlab-ci.yml
+image: alpine:latest
+
+pages:
+  stage: deploy
+  script:
+    - mkdir -p public
+    # Copy everything except the .git folder into public/
+    - cp -r * public || true
+  artifacts:
+    paths:
+      - public
+  only:
+    - main   # or 'master' if your default branch is master
