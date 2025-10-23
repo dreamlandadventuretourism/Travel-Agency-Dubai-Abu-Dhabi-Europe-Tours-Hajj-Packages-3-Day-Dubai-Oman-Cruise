@@ -1,14 +1,13 @@
-# .gitlab-ci.yml
+# .gitlab-ci.yml — minimal Pages for plain HTML/CSS
 image: alpine:latest
 
 pages:
   stage: deploy
   script:
     - mkdir -p public
-    # Copy everything except the .git folder into public/
-    - cp -r * public || true
+    - cp -r * public || true   # copy root files into public/
   artifacts:
     paths:
       - public
   only:
-    - main   # or 'master' if your default branch is master
+    - main   # change to 'master' if that’s your default branch
